@@ -3,7 +3,9 @@
   padding: 0;
 }
 body {
-  background-image: url(./img/istockphoto-1165069915-1024x1024.jpg);
+  background-image: url(./img/flying-2891745_1280.jpg);
+  background-repeat: repeat;
+  background-size: cover;
 }
 main {
   position: relative;
@@ -18,7 +20,8 @@ main {
 #checkout-title {
   font-family: Mon, Arial, Helvetica, sans-serif;
   text-align: center;
-  margin: 10px 0;
+  /* margin-top: 5px; */
+  color: white;
 }
 
 main form {
@@ -124,9 +127,10 @@ main form {
 
 #product-painel {
   position: absolute;
+  left: 200px;
   width: 100%;
   border-radius: 10px;
-  /* background-color: #eeeeee; */
+  background-color: white;
   padding: 10px 20px;
   display: flex;
   flex-wrap: wrap;
@@ -169,12 +173,13 @@ main form {
 }
 
 .quantity-controller {
+  background-color: bisque;
   border-radius: 5px;
-  border: 1px solid rgb(136, 136, 136);
+  border: 1px solid #f2994a;
   display: flex;
   justify-content: space-around;
   width: 50%;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .quantity-controller button,
@@ -212,6 +217,11 @@ p {
   font-size: 14px;
   font-weight: bold;
 }
+@keyframes fading-text {
+  50% {
+    opacity: 0;
+  }
+}
 
 .buy-detail {
   margin: 5px 0;
@@ -244,13 +254,14 @@ span {
 }
 i {
   border-radius: 5px;
-  border: 1px solid gray;
-  background-color: rgb(223, 221, 221);
+  border: 1px solid #f2994a;
+  background-color: #f2994a;
   /* padding: 12px; */
   padding: 5px 10px 10px 5px;
   margin: 10px 3px 3px 3px;
   height: 10px;
   width: 10px;
+  color: white;
 }
 .quantity-controller p {
   padding: 8px;
@@ -428,7 +439,7 @@ i {
     display: flex;
     justify-content: space-around;
     width: 50%;
-    margin-top: 25px;
+    margin-top: 10px;
   }
 
   .quantity-controller button,
@@ -480,13 +491,13 @@ i {
     text-decoration: line-through;
   }
 }
-@keyframes fading-text {
-  50% {
-    opacity: 0;
-  }
-}
 
 @media only screen and (max-width: 540px) {
+  body {
+    background-image: url(./img/logitech.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+  }
   main {
     grid-template-columns: 100%;
     width: 90%;
