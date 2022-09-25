@@ -1,6 +1,6 @@
-// const taxRate = 0.18;
-// const shippingPrice = 50;
-// const shippingFreePrice = 600;
+const taxRate = 0.18;
+const shippingPrice = 50;
+const shippingFreePrice = 600;
 
 window.addEventListener("load", () => {
   calculateCartPrice();
@@ -83,15 +83,39 @@ const calculateCartPrice = () => {
   );
 
   // console.log(shippingPrice);
+  let totalPrice = subtotal + taxPrice + shippingPrice;
   document.querySelector("#cart-subtotal").lastElementChild.innerText =
     subtotal.toFixed(2);
   document.querySelector("#cart-tax p:nth-child(2)").innerText =
-    taxPrice.toFixed(2);
+    -taxPrice.toFixed(2);
   document.querySelector("#cart-shipping").children[1].innerText =
     shippingPrice.toFixed(2);
-  document.querySelector("#cart-total").lastElementChild.innerText = (
-    subtotal +
-    taxPrice +
-    shippingPrice
-  ).toFixed(2);
+  document.querySelector("#cart-total").lastElementChild.innerText =
+    totalPrice.toFixed(2);
+  let clicked = true;
+  let discountPrice = totalPrice * 0.01;
+  document.querySelector("#apply-discount").addEventListener("click", () => {
+    if (clicked) {
+      totalPrice -= discountPrice;
+      document.querySelector("#cart-total").lastElementChild.innerText =
+        totalPrice.toFixed(2);
+      document.querySelector("#cart-discount").classList.add("buy-detail");
+      document.querySelector("#cart-discount p:nth-child(1)").innerText =
+        "Discount";
+      document.querySelector("#cart-discount p:nth-child(2)").innerText =
+        parseFloat(-discountPrice).toFixed(2);
+      /*   document.querySelector("#remove-discount").disabled = false; */
+      clicked = false;
+    } else {
+      document.querySelector("#cart-total").disabled = true;
+    }
+  });
+
+  document
+    .querySelector(".remove-discount-btn")
+    .addEventListener("click", () => {
+      totalPrice += discountPrice;
+      console.log(totalPrice);
+      document.getElementsByClassName("#cart-discount").remove();
+    });
 };

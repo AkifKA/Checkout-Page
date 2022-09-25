@@ -3,7 +3,7 @@
   padding: 0;
 }
 body {
-  background-image: url(./img/flying-2891745_1280.jpg);
+  background-color: #828282;
   background-repeat: repeat;
   background-size: cover;
 }
@@ -578,6 +578,7 @@ i {
 .discount-area button:hover {
   background-color: brown;
 }
+
 .product-price strong::before {
   content: "$";
 }
