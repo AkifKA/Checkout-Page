@@ -50,26 +50,39 @@ const calculateProductPrice = (clickedBtn) => {
   productTotalDiv.innerText = (price * quantity).toFixed(2);
 };
 
-const calculateCardPrice = () => {
-  const productTotalPriceDivs = document.querySelectorAll(
+const calculateProductPrice = (btn) => {
+  const productInfoDiv = btn.parentElement.parentElement;
+  //console.log(productInfoDiv);
+  const price = productInfoDiv.querySelector(".product-price strong").innerText;
+  const quantity = productInfoDiv.querySelector(".quantity").innerText;
+  const productTotalDiv = productInfoDiv.querySelector(".product-line-price");
+  productTotalDiv.innerText = (price * quantity).toFixed(2);
+  //alert(quantity);
+};
+
+const calculateCartPrice = () => {
+  const productsTotalPricesDivs = document.querySelectorAll(
     ".product-line-price"
   );
+  //foreach ==> NodeList, Array
+  //const productsTotalPricesDivs = [...document.getElementsByClassName("product-line-price")];
 
-  //? forEach==> Nodelist, Array
-  /*  const productTotalPriceDivs=[...document.getElementsByClassName("product-line-price")]; */
-  productTotalPriceDivs.forEach((div) => {
-    let subTotal = 0;
+  let subtotal = 0;
+  productsTotalPricesDivs.forEach((div) => {
+    subtotal += parseFloat(div.innerText);
+  });
+  //console.log(subtotal);
+  const taxPrice = subtotal * localStorage.getItem("taxRate");
 
-    subTotal += parseFloat(div.innerText);
+  const shippingPrice = parseFloat(
+    subtotal > 0 && subtotal < localStorage.getItem("shippingFreePrice")
+      ? localStorage.getItem("shippingPrice")
+      : 0
+  );
 
-    const taxPrice = subTotal * localStorage.getItem("taxRate");
+  console.log(shippingPrice);
 
-    const shippingPrice = parseFloat(
-      subTotal > 0 && subTotal < localStorage.getItem("shippingPrice")
-        ? localStorage.getItem("shippingPrice")
-        : 0
-    );
-    document.querySelector("#cart-subtotal").lastElementChild.innerText =
+  document.querySelector("#cart-subtotal").lastElementChild.innerText =
     subtotal.toFixed(2);
   document.querySelector("#cart-tax p:nth-child(2)").innerText =
     taxPrice.toFixed(2);
@@ -80,6 +93,4 @@ const calculateCardPrice = () => {
     taxPrice +
     shippingPrice
   ).toFixed(2);
-};
-  });
 };
