@@ -69,11 +69,17 @@ const calculateCardPrice = () => {
         ? localStorage.getItem("shippingPrice")
         : 0
     );
-    document.querySelector("#cart-subtotal p:last-child").innerText = subTotal;
-    document.querySelector("#cart-tax p:nth-child(2)").innerText = taxPrice;
-    document.querySelector("#cart-tax").lastElementChild.innerText =
-      shippingPrice;
-    document.querySelector("#cart-total p:last-child").innerText =
-      subTotal + taxPrice + shippingPrice;
+    document.querySelector("#cart-subtotal").lastElementChild.innerText =
+    subtotal.toFixed(2);
+  document.querySelector("#cart-tax p:nth-child(2)").innerText =
+    taxPrice.toFixed(2);
+  document.querySelector("#cart-shipping").children[1].innerText =
+    shippingPrice.toFixed(2);
+  document.querySelector("#cart-total").lastElementChild.innerText = (
+    subtotal +
+    taxPrice +
+    shippingPrice
+  ).toFixed(2);
+};
   });
 };
