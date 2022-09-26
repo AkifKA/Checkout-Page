@@ -214,7 +214,7 @@ p {
   padding: 5px;
   animation: fading-text 0.9s linear infinite;
   color: brown;
-  font-size: 14px;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 @keyframes fading-text {

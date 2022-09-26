@@ -17,7 +17,7 @@
   </head>
   <body>
     <header>
-    <h1 id="checkout-title">Checkout Page</h1>
+    <h1 id="checkout-title">MAK COMPUTER-OEM STORE</h1>
   </header>
     <main>
       <div id="products-preview">
@@ -34,9 +34,9 @@
                   </p>
                 </div>
                 <div class="quantity-controller">
-                  <i class="fa-solid fa-minus"></i>
+                  <i class="fa-solid fa-minus fa-solid-2"></i>
                   <p class="quantity">1</p>
-                  <i class="fa-solid fa-plus"></i>
+                  <i class="fa-solid fa-plus fa-solid-2"></i>
                 </div>
                 <div class="product-removal">
                   <button class="remove-product">Remove</button>
@@ -58,9 +58,9 @@
                   </p>
                 </div>
                 <div class="quantity-controller">
-                  <i class="fa-solid fa-minus"></i>
+                  <i class="fa-solid fa-minus fa-solid-2"></i>
                   <p class="quantity">1</p>
-                  <i class="fa-solid fa-plus"></i>
+                  <i class="fa-solid fa-plus fa-solid-2"></i>
                 </div>
                 <div class="product-removal">
                   <button class="remove-product">Remove</button>
@@ -80,9 +80,9 @@
                   </p>
                 </div>
                 <div class="quantity-controller">
-                  <i class="fa-solid fa-minus"></i>
+                  <i class="fa-solid fa-minus fa-solid-2"></i>
                   <p class="quantity">1</p>
-                  <i class="fa-solid fa-plus"></i>
+                  <i class="fa-solid fa-plus fa-solid-2"></i>
                 </div>
                 <div class="product-removal">
                   <button class="remove-product">Remove</button>
@@ -92,9 +92,9 @@
             </div>
           </div>
           <div class="discount-area">
-            <p class="fading-text">You have a 10% discount coupon. Click the button to apply it!!!</p>
+            <p class="fading-text">You have a %20 discount coupon. Click the button to apply it!!!</p>
             <button class="apply-discount-btn" id="apply-discount">Apply Discount </button>
-            <button class="remove-discount-btn" id="remove-discount" disabled="">Remove Discount</button>
+            <button class="remove-discount-btn" id="remove-discount" disabled="true">Remove Discount</button>
           </div>
           <div class="buy-detail" id="cart-subtotal">
             <p>Subtotal</p>
@@ -105,17 +105,21 @@
             <p>0</p>
           </div>
           <div class="buy-detail" id="cart-shipping">
-            <p>Shipping</p>
+            <p>Shipping (+$600=>Free)</p>
+            <p>0</p>
+          </div>
+          <div class="buy-detail" id="cart-total">
+            <p>Total</p>
             <p>0</p>
           </div>
           <div id="cart-discount">
             <p></p>
             <p></p>
             </div>
-            <div class="buy-detail" id="cart-total">
-              <p>Total</p>
-              <p>0</p>
-            </div>
+            <div id="cart-total-with-discount">
+              <p></p>
+              <p></p>
+              </div>
           </div>
         </div>
       </div>

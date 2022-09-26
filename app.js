@@ -47,6 +47,8 @@ productsDiv.addEventListener("click", (event) => {
     //console.log("remove btn is clicked!");
     event.target.parentElement.parentElement.parentElement.remove();
     calculateCartPrice();
+    document.querySelector("#cart-discount").remove();
+    document.querySelector("#cart-total-with-discount").remove();
   } else {
     //console.log("other element is clicked!");
   }
@@ -68,7 +70,6 @@ const calculateCartPrice = () => {
   );
   //foreach ==> NodeList, Array
   //const productsTotalPricesDivs = [...document.getElementsByClassName("product-line-price")];
-
   let subtotal = 0;
   productsTotalPricesDivs.forEach((div) => {
     subtotal += parseFloat(div.innerText);
@@ -87,16 +88,15 @@ const calculateCartPrice = () => {
   document.querySelector("#cart-subtotal").lastElementChild.innerText =
     subtotal.toFixed(2);
   document.querySelector("#cart-tax p:nth-child(2)").innerText =
-    -taxPrice.toFixed(2);
+    taxPrice.toFixed(2);
   document.querySelector("#cart-shipping").children[1].innerText =
     shippingPrice.toFixed(2);
   document.querySelector("#cart-total").lastElementChild.innerText =
     totalPrice.toFixed(2);
   let clicked = true;
-  let discountPrice = totalPrice * 0.01;
+  let discountPrice = totalPrice * 0.2;
   document.querySelector("#apply-discount").addEventListener("click", () => {
     if (clicked) {
-      totalPrice -= discountPrice;
       document.querySelector("#cart-total").lastElementChild.innerText =
         totalPrice.toFixed(2);
       document.querySelector("#cart-discount").classList.add("buy-detail");
@@ -104,18 +104,34 @@ const calculateCartPrice = () => {
         "Discount";
       document.querySelector("#cart-discount p:nth-child(2)").innerText =
         parseFloat(-discountPrice).toFixed(2);
-      /*   document.querySelector("#remove-discount").disabled = false; */
+      document
+        .querySelector("#cart-total-with-discount")
+        .classList.add("buy-detail");
+      document.querySelector(
+        "#cart-total-with-discount p:nth-child(1)"
+      ).innerText = "Total With Discount";
+      document.querySelector(
+        "#cart-total-with-discount p:nth-child(2)"
+      ).innerText = parseFloat(totalPrice - discountPrice).toFixed(2);
+      document.querySelector("#remove-discount").disabled = false;
+      console.log(document.querySelectorAll(".fa-solid"));
+      document.querySelectorAll(".quantity-controller").forEach((item) => {
+        item.remove();
+      });
+
       clicked = false;
     } else {
       document.querySelector("#cart-total").disabled = true;
     }
   });
-
-  document
-    .querySelector(".remove-discount-btn")
-    .addEventListener("click", () => {
-      totalPrice += discountPrice;
-      console.log(totalPrice);
-      document.getElementsByClassName("#cart-discount").remove();
-    });
+  document.getElementById("remove-discount").addEventListener("click", () => {
+    clicked = true;
+    document.querySelector(
+      "#cart-total-with-discount p:nth-child(2)"
+    ).innerText = parseFloat(totalPrice + discountPrice).toFixed(2);
+    document.querySelector("#cart-discount").remove();
+    document.querySelector("#cart-total-with-discount").remove();
+    document.querySelector(".fading-text").remove();
+    document.querySelector("#remove-discount").disabled = false;
+  });
 };
