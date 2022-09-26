@@ -99,6 +99,7 @@ const calculateCartPrice = () => {
     if (clicked) {
       document.querySelector("#cart-total").lastElementChild.innerText =
         totalPrice.toFixed(2);
+      console.log(document.querySelector("#cart-total"));
       document.querySelector("#cart-discount").classList.add("buy-detail");
       document.querySelector("#cart-discount p:nth-child(1)").innerText =
         "Discount";
@@ -118,7 +119,6 @@ const calculateCartPrice = () => {
       document.querySelectorAll(".quantity-controller").forEach((item) => {
         item.remove();
       });
-
       clicked = false;
     } else {
       document.querySelector("#cart-total").disabled = true;
