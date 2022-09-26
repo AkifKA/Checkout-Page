@@ -269,7 +269,7 @@ i {
   font-weight: bold;
 }
 
-@media only screen and (max-width: 1450px) {
+only screen and (max-width: 1450px) {
   main {
     position: relative;
     width: 70%;
@@ -493,11 +493,6 @@ i {
 }
 
 @media only screen and (max-width: 540px) {
-  body {
-    background-image: url(./img/logitech.jpg);
-    background-repeat: repeat;
-    background-size: cover;
-  }
   main {
     grid-template-columns: 100%;
     width: 90%;
